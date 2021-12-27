@@ -76,4 +76,16 @@ CMD [ "node", "server.js"]
 
 - 아직도 코드 변경시 변경 소스 코드를 복사하고 다시 이미지를 빌드하고 컨테이너를 다시 실행해야 하는 번거로움이 있다 
 
-  
+- COPY 지시자는 로컬 호스트의 디렉터리에 있는 파일을 도커 컨테이너로 그대로 복사하는 방식입니다.
+- 도커 볼륨은 도커 컨테이너에서 호스트 디렉터리에 있는 파일들을 참조해서 사용하는 방식입니다 
+
+```powershell
+$ docker run -d -p 5000:8080 -v /usr/src/app/node_modules -v ${pwd}:/usr/src/app sangjinsu/node-app # powershell
+```
+
+- `-v /usr/src/app/node_modules` 
+  - 도커 볼륨은 컨테이너에서 호스트 디렉터리를 참조하는데, 참조하면 안되는 부분이 있다. 바로 node_modules 폴더이다 
+  - node_modules 폴더는 컨테이너에 있지만 호스트 디렉터리에는 없습니다 
+
+
+
